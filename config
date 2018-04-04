@@ -1,0 +1,17 @@
+# Specify password only once for multiple SSH connections
+Host *
+    ControlMaster auto
+    ControlPath ~/.ssh/master-%r@%h:%p
+    ControlPersist 43200
+# CAEN - MWireless (no DUO)
+Host caen
+    HostName oncampus-course.engin.umich.edu
+    User kpandit
+    Compression yes
+# CAEN - Off campus wifi 
+Host caenoff
+    HostName login.engin.umich.edu
+    User kpandit
+    Compression yes
+    
+
