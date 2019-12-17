@@ -16,34 +16,51 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'tomasr/molokai'
 Plugin 'bling/vim-airline'
 "1.1: Package managing: YouCompleteMe
-Plugin 'Valloric/YouCompleteMe'
+"Plugin 'Valloric/YouCompleteMe'
 
 call vundle#end()
 
 filetype plugin indent on
 "1.1: Package managing: YouCompleteMe
-let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+"let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+let g:ycm_filetype_blacklist = {
+        \ 'tex' : 1,
+        \ 'tagbar' : 1,
+        \ 'qf' : 1,
+        \ 'notes' : 1,
+        \ 'markdown' : 1,
+        \ 'unite' : 1,
+        \ 'text' : 1,
+        \ 'vimwiki' : 1,
+        \ 'pandoc' : 1,
+        \ 'infolog' : 1,
+        \ 'mail' : 1
+        \}
+"autocmd FileType tex :AcpDisable
 
-"let g:molokai_original = 1
-"colorscheme molokai
+" let g:molokai_original = 1
+" colorscheme molokai
 "1.2: Solarized
 " --- Solarized Theme ---
-syntax enable
-set background=dark   
-colorscheme solarized
+"let g:solarized_termcolors=256
+"syntax enable
+"set background=light   
+"let g:solarized_contrast="high"
+"colorscheme solarized
+"highlight Normal ctermfg=white 
 
 " --- Useful IDE Stuff ---
 Plugin 'scrooloose/nerdtree'
 Plugin 'jistr/vim-nerdtree-tabs'
 "Checks for syntax errors
-Plugin 'vim-syntastic/syntastic'
+"Plugin 'vim-syntastic/syntastic'
 Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-easytags'
 Plugin 'majutsushi/tagbar'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'vim-scripts/a.vim'
 Plugin 'Raimondi/delimitMate'
-
+"Plugin 'vim-syntastic/syntastic'
 
 " --- General settings ---
 set backspace=indent,eol,start
