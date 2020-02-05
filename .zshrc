@@ -1,22 +1,35 @@
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/bin:/usr/local/bin:$PATH
+PATH=$PATH:/Library/TeX/texbin
+path+=/Users/kartikp/Library/Python/3.7/bin
 #export PS1="\[\033[36m\]\u\[\033[m\]@\[\033[32m\]KartiksMacBook:\[\033[33;1m\]\w\[\033[m\]\$ "
 # Path to your oh-my-zsh installation.
 export ZSH=/Users/kartikp/.oh-my-zsh
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME=agnoster
+#BULLETTRAIN_PROMPT_ADD_NEWLINE=false
+ZSH_THEME=robbyrussell
+#robbyrussell
+#ZSH_THEME="powerlevel9k/powerlevel9k"
 DEFAULT_USER=kartikp
+#BULLETTRAIN_PROMPT_ORDER=(
+  #time
+  #dir
+  #git
+#)
+#BULLETTRAIN_TIME_BG=yellow
+#BULLETTRAIN_DIR_FG=black
+
 # Set list of themes to load
 # Setting this variable when ZSH_THEME=random
 # cause zsh load theme from this variable instead of
 # looking in ~/.oh-my-zsh/themes/
 # An empty array have no effect
 # ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
-calc () {
-    bc -l <<< "$@"
-}
+#calc () {
+ #   bc -l <<< "$@"
+#}
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
@@ -28,7 +41,7 @@ calc () {
 # DISABLE_AUTO_UPDATE="true"
 
 # Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
+export UPDATE_ZSH_DAYS=60
 
 # Uncomment the following line to disable colors in ls.
 # DISABLE_LS_COLORS="true"
@@ -59,10 +72,15 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-source /Users/kartikp/.oh-my-zsh/custom/plugins/calc
+source /Users/kartikp/.oh-my-zsh/plugins/z
 plugins=(
   git 
-  calc
+  z
+  zsh-syntax-highlighting
+  colorls
+  last-working-dir
+  osx
+  extract
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -95,4 +113,30 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+#alias :q="exit"
+alias activate_env="source env/bin/activate"
+alias lc='colorls'
+alias whatismyip='curl ifconfig.me'
+export PATH=${PATH}:/usr/local/mysql/bin/
+alias glog="git log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --branches"
+alias gac="git add . && git commit -a -m "
 
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+export PATH="$PATH:/Users/kartikp/Documents/flutter/bin"
+export PATH="/usr/local/sbin:$PATH"
+# Updates editor information when the keymap changes.
+function zle-keymap-select() {
+  zle reset-prompt
+  zle -R
+}
+
+zle -N zle-keymap-select
+
+function vi_mode_prompt_info() {
+  echo "${${KEYMAP/vicmd/[% NORMAL]%}/(main|viins)/[% INSERT]%}"
+}
+
+# define right prompt, regardless of whether the theme defined it
+RPS1='$(vi_mode_prompt_info)'
+RPS2=$RPS1
