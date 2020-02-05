@@ -12,9 +12,10 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'altercation/vim-colors-solarized'
+"Plugin 'altercation/vim-colors-solarized'
 Plugin 'tomasr/molokai'
 Plugin 'bling/vim-airline'
+Plugin 'tpope/vim-surround'
 "1.1: Package managing: YouCompleteMe
 "Plugin 'Valloric/YouCompleteMe'
 
